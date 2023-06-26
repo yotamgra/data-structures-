@@ -11,13 +11,15 @@ class LinkedList {
     this.tail = null;
     this.size = 0;
   }
+  // Returns true if the linked list is empty.
   isEmpty() {
     return this.size === 0;
   }
+  // Returns the number of nodes in the linked list.
   getSize() {
     return this.size;
   }
-  //O(1)
+  // Inserts a new node with the given value at the beginning of the linked list.
   prepend(value) {
     const node = new Node(value);
     if (this.isEmpty()) {
@@ -28,7 +30,7 @@ class LinkedList {
     }
     this.size++;
   }
-  //O(n)
+  // Inserts a new node with the given value at the end of the linked list.
   append(value) {
     const node = new Node(value);
     if (this.isEmpty()) {
@@ -42,7 +44,7 @@ class LinkedList {
     }
     this.size++;
   }
-
+  // Inserts a new node with the given value at the specified index in the linked list.
   insert(value, index) {
     if (index < 0 || index > this.size) {
       return;
@@ -61,6 +63,7 @@ class LinkedList {
       this.size++;
     }
   }
+  // Removes the node at the specified index from the linked list and returns its value.
   removeFrom(index) {
     if (index < 0 || index >= this.size) {
       return null;
@@ -80,6 +83,7 @@ class LinkedList {
     this.size--;
     return removedNode.value;
   }
+  // Removes the first occurrence of a node with the given value from the linked list and returns the value.
   removeValue(value) {
     if (this.isEmpty()) {
       return null;
@@ -102,7 +106,7 @@ class LinkedList {
       return null;
     }
   }
-
+  // Searches for the first occurrence of a node with the given value in the linked list and returns its index.
   search(value) {
     if (this.isEmpty()) {
       return -1;
@@ -116,7 +120,7 @@ class LinkedList {
     }
     return -1;
   }
-
+  // Reverses the order of nodes in the linked list.
   reverse() {
     if (this.isEmpty()) {
       return;
@@ -131,6 +135,7 @@ class LinkedList {
     }
     this.head = prev;
   }
+  // Inserts a new node with the given value at the beginning of the linked list.
   prependWithTail(value) {
     const node = new Node(value);
     if (this.isEmpty()) {
@@ -142,6 +147,7 @@ class LinkedList {
     }
     this.size++;
   }
+  // Inserts a new node with the given value at the end of the linked list.
   appendWithTail(value) {
     const node = new Node(value);
     if (this.isEmpty()) {
@@ -153,6 +159,7 @@ class LinkedList {
     }
     this.size++;
   }
+  // Removes the first node (head) from the linked list and returns its value.
   removeFromFront() {
     if (this.isEmpty()) {
       return null;
@@ -167,6 +174,7 @@ class LinkedList {
     this.size--;
     return removedValue;
   }
+  // Removes the last node (tail) from the linked list and returns its value.
   removeFromEnd() {
     if (this.isEmpty()) {
       return null;
@@ -177,17 +185,17 @@ class LinkedList {
       this.tail = null;
     } else {
       let prev = this.head;
-    //   while (prev.next !== this.tail)
-        for (let i = 0; i < this.size - 2; i++) {
-          prev = prev.next;
-        }
+      //   while (prev.next !== this.tail)
+      for (let i = 0; i < this.size - 2; i++) {
+        prev = prev.next;
+      }
       this.tail = prev;
       this.tail.next = null;
     }
     this.size--;
     return removedValue;
   }
-
+  // Prints the values of all nodes in the linked list.
   print() {
     if (this.isEmpty()) {
       console.log("The list is empty");
@@ -228,5 +236,4 @@ const list = new LinkedList();
 // list.print();
 // list.reverse();
 
-
-module.exports = LinkedList
+module.exports = LinkedList;

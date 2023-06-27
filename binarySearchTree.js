@@ -76,13 +76,69 @@ class BinarySearchTree {
       }
     }
   }
+  preOrder(root) {
+    if (root) {
+      console.log(root.value);
+      this.preOrder(root.left);
+      this.preOrder(root.right);
+    }
+  }
+  inOrder(root) {
+    if (root) {
+      this.inOrder(root.left);
+      console.log(root.value);
+      this.inOrder(root.right);
+    }
+  }
+  postOrder(root) {
+    if (root) {
+      this.postOrder(root.left);
+      this.postOrder(root.right);
+      console.log(root.value);
+    }
+  }
+  levelOrder() {
+    const queue = [];
+    queue.push(this.root);
+    while (queue.length) {
+      let curr = queue.shift();
+      console.log(curr.value);
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+  }
+  min(root) {
+    if (!root) {
+      return;
+    }
+    if (!root.left) {
+      return root.value;
+    }
+    return this.min(root.left);
+  }
+  max(root) {
+    if (!root) {
+      return null;
+    }
+    if (!root.right) {
+      return root.value;
+    }
+    return this.max(root.right);
+  }
 }
 
 const bts = new BinarySearchTree();
-bts.insert(10);
-bts.insert(5);
-bts.insert(15);
+// bts.insert(10);
+// bts.insert(5);
+// bts.insert(15);
+// bts.insert(3);
+// bts.insert(7);
 console.log(bts.search(10));
 console.log(bts.search(5));
 console.log(bts.search(15));
 console.log(bts.search(20));
+console.log(bts.max(bts.root));
